@@ -24,9 +24,30 @@ To get started with your new GDExtension, do the following:
 * change the `entry_symbol` string inside [project/bin/example.gdextension](./project/bin/example.gdextension) file.
   * rename the `example_library_init` function in [src/register_types.cpp](./src/register_types.cpp) to the same name you chose for `entry_symbol`.
 
-The default branch of the godot-cpp bindings that is downloaded by cmake is the current msater branch.   If you wish your extension to target a specific version of the godot-cpp bindings, then change the tag property of the godot-cpp fetch configuration in [CMakeLists.txt](./CMakeLists.txt) to the git tag of the specific version of the godot-cpp bindings you wish to target.
+The default branch of the godot-cpp bindings that is downloaded by cmake is the current master branch. 
+It is likely that you will wish to change this to target a specific stable version of the GDExtension api.
+To do so, change the tag property of the godot-cpp fetch configuration in [CMakeLists.txt](./CMakeLists.txt)
+to the git tag of the version of the  [godot-cpp](https://github.com/godotengine/godot-cpp) bindings you wish to target.
 
+For example if you wish to specifically target 4.5, you would change it from this:
+```cmake
+FetchContent_Declare(
+        godot-cpp
+        GIT_REPOSITORY https://github.com/godotengine/godot-cpp.git
+        GIT_TAG master
+        SYSTEM
+)
+```
+To This:
 
+```cmake
+FetchContent_Declare(
+        godot-cpp
+        GIT_REPOSITORY https://github.com/godotengine/godot-cpp.git
+        GIT_TAG godot-4.5-stable
+        SYSTEM
+)
+```
 
 Now, you can configure the project which will download the godot-cpp bindings:
 
