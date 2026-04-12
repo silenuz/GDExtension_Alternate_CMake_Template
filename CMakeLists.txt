@@ -17,7 +17,7 @@ include(FetchContent)
 FetchContent_Declare(
         godot-cpp
         GIT_REPOSITORY https://github.com/godotengine/godot-cpp.git
-        GIT_TAG 10.0.0-rc1
+        GIT_TAG master
         SYSTEM
 )
 
