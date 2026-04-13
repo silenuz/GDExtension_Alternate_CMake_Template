@@ -48,6 +48,41 @@ FetchContent_Declare(
         SYSTEM
 )
 ```
+By default, Cmake will place the fetched content in the 
+
+```cmake
+"${CMAKE_BINARY_DIR}/_deps"
+```
+which in this case is the [cmake-build-debug](./cmake-build-debug) folder.
+
+If you wish to change the folder where external source code will be stored and built, you can set the
+`FETCHCONTENT_BASE_DIR` variable in the [CMakeLists.txt](./CMakeLists.txt) to change the download/build folder.
+
+For example if you wish to have your external source downloaded and built in a folder called `_external_bin`, you would add the following line near the top of the [CMakeLists.txt](./CMakeLists.txt) file like so:
+
+```cmake
+set (FETCHCONTENT_BASE_DIR "${CMAKE_SOURCE_DIR}/_external_bin" CACHE PATH "Custom fetch content root")
+```
+
+Note this will create three folders in the base directory for each external source, the source code itself, a sub build folder, and a build folder.  
+
+In most cases it might be desirable to have the source code separate from its build folders, or perhaps you want your project to have the godot-cpp source code in the main project folder like the default template.
+
+To change the folder where the source code for the godot-cpp bindings is placed, add a `SOURCE_DIR` to the fetch content declaration like so:
+```cmake
+
+FetchContent_Declare(
+        godot-cpp
+        GIT_REPOSITORY https://github.com/godotengine/godot-cpp.git
+        GIT_TAG godot-4.5-stable
+        SOURCE_DIR "${CMAKE_SOURCE_DIR}/godot-cpp"
+        SYSTEM
+)
+```
+
+This will result in the source code being placed in the project's top level, in a folder called godot-cpp. 
+
+If you changed the base directory for fetching content, then that directory will contain the `godot-cpp-build` and `godot-cpp-subbuild` folders, otherwise they will be found in default `_deps` folder.
 
 Now, you can configure the project which will download the godot-cpp bindings:
 
