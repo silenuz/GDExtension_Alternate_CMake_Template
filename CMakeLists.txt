@@ -77,8 +77,8 @@ set_target_properties(${LIBNAME}
         # The generator expression here prevents msvc from adding a Debug or Release subdir.
         RUNTIME_OUTPUT_DIRECTORY "$<1:${PROJECT_SOURCE_DIR}/bin/${GODOTCPP_PLATFORM}>"
 
-        PREFIX ""
-        OUTPUT_NAME "${LIBPREFIX}${LIBNAME}${GODOTCPP_SUFFIX}"
+        PREFIX "${LIBPREFIX}"
+        OUTPUT_NAME "${LIBNAME}${GODOTCPP_SUFFIX}"
 )
 
 set(GODOT_PROJECT_BINARY_DIR "${PROJECT_SOURCE_DIR}/${GODOT_PROJECT_DIR}/bin/${GODOTCPP_PLATFORM}")
