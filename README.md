@@ -25,7 +25,7 @@ To get started with your new GDExtension, do the following:
   * rename the `example_library_init` function in [src/register_types.cpp](./src/register_types.cpp) to the same name you chose for `entry_symbol`.
 
 The default branch of the godot-cpp bindings that is downloaded by cmake is the current master branch. 
-It is likely that you will wish to change this to target a specific stable version of the GDExtension api.
+You may wish to change this to target a specific stable version of the GDExtension api.
 To do so, change the tag property of the godot-cpp fetch configuration in [CMakeLists.txt](./CMakeLists.txt)
 to the git tag of the version of the  [godot-cpp](https://github.com/godotengine/godot-cpp) bindings you wish to target.
 
@@ -109,7 +109,28 @@ This will result in the source code being placed in the project's top level, in 
 
 If you changed the base directory for fetching content, then that directory will contain the `godot-cpp-build` and `godot-cpp-subbuild` folders, otherwise they will be found in default `_deps` folder.
 
-## godot-cpp Configuration
+# godot-cpp Configuration
+
+It is possible to further configure cmake to set specific `godot-cpp` variables such as
+* [Changing the project folder](#change-project-folder) 
+* [Enabling developer builds](#developer-build)
+* [Enabling exception handling](#exception-handling)
+
+## Change Project Folder
+
+To change the project folder, first rename the [project folder](./project) to the name you wish for the project.
+
+Now open [CMakeLists.txt](./CMakeLists.txt) and near the top, just under where the library name was changed in the initial setup is a line like so:
+```cmake
+set(GODOT_PROJECT_DIR "project" CACHE STRING "The directory of a Godot project folder")
+```
+Change `project` to be the name of the newly renamed folder.  So if you changed the project folder name to mycooldemo, then it would look like this:
+
+```cmake
+set(GODOT_PROJECT_DIR "mycooldemo" CACHE STRING "The directory of a Godot project folder")
+```
+
+## Developer Build
 
 At some point you may wish to include debug symbols in your extension, whether for troubleshooting or profiling.  To do so
 simply add the developer build variable near the top of the [CMakeLists.txt](./CMakeLists.txt) with a value of `ON`:
@@ -152,6 +173,8 @@ set_target_properties(${LIBNAME}
         OUTPUT_NAME "${LIBNAME}${MYSUFFIX}"
 )
 ```
+
+## Exception Handling
 
 
 ### Configuring an IDE
