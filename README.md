@@ -176,6 +176,37 @@ set_target_properties(${LIBNAME}
 
 ## Exception Handling
 
+By default, exception handling is disabled, as Godot doesn't use exceptions anywhere, so with exceptions disabled the resulting binary is 
+about 20 percent smaller and builds significantly faster. 
+
+If however you are including a third party library in the build, and the library requires exception handling, or if you wish to use exceptions despite the drawbacks, simply add the following line
+near the top of [CMakeLists.txt](./CMakeLists.txt) file.
+
+```cmake
+set( GODOTCPP_DISABLE_EXCEPTIONS OFF)
+```
+
+## godot-cpp Variable List
+
+| Variable                            | Type     | Default        | Description                                                                                                                |
+|-------------------------------------|----------|----------------|----------------------------------------------------------------------------------------------------------------------------|
+| GODOTCPP_BUILD_PROFILE              | PATH     |                | Path to a file containing a feature build profile                                                                          |
+| GODOTCPP_CUSTOM_API_FILE            | FILEPATH |                | Path to a custom GDExtension API JSON file (takes precedence over `GODOTCPP_GDEXTENSION_DIR`) ( /path/to/custom_api_file ) |
+| GODOTCPP_DEBUG_CRT                  | BOOL     | OFF            | Compile with MSVC's debug CRT (/MDd)                                                                                       |
+| GODOTCPP_DEV_BUILD                  | BOOL     | OFF            | Developer build with dev-only debugging code (DEV_ENABLED)                                                                 |
+| GODOTCPP_DISABLE_EXCEPTIONS         | BOOL     | ON             | Force disabling exception handling code (ON,OFF)                                                                           |
+| GODOTCPP_ENABLE_TESTING             | BOOL     | OFF            | Enable the godot-cpp.test.<target> integration testing targets                                                             |
+| GODOTCPP_GDEXTENSION_DIR            | PATH     | gdextension    | Path to a custom directory containing GDExtension interface header and API JSON file ( /path/to/gdextension_dir )          |
+| GODOTCPP_GENERATE_TEMPLATE_GET_NODE | BOOL     | ON             | Generate a template version of the Node class's get_node. (ON,OFF)                                                         |
+| GODOTCPP_PRECISION                  | STRING   | single         | Set the floating-point precision level (single,double)                                                                     |
+| GODOTCPP_SYMBOL_VISIBILITY          | STRING   | hidden         | Symbols visibility on GNU platforms. Use 'auto' to apply the default value. (auto,visible,hidden)                          |
+| GODOTCPP_SYSTEM_HEADERS             | BOOL     | OFF            | Expose headers as SYSTEM.                                                                                                  |
+| GODOTCPP_TARGET                     | STRING   | template_debug | Which target to generate. valid values are template_debug, template_release, and editor                                    |                                                                                                                      |
+| GODOTCPP_THREADS                    | BOOL     | ON             | Enable threading support                                                                                                   |
+| GODOTCPP_USE_HOT_RELOAD             | BOOL     |                | Enable the extra accounting required to support hot reload. (ON,OFF)                                                       |
+| GODOTCPP_USE_STATIC_CPP             | BOOL     | ON             | Link MinGW/MSVC C++ runtime libraries statically                                                                           |
+| GODOTCPP_WARNING_AS_ERROR           | BOOL     | OFF            | Treat warnings as errors                                                                                                   |
+ | GODOT_PROJECT_DIR                   | STRING   | project        | The directory of a Godot project folder                                                                                    |
 
 ### Configuring an IDE
 
