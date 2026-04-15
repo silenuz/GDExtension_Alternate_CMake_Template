@@ -1,7 +1,9 @@
 Note the content of this repository is basically the same as the [official template](https://github.com/godotengine/godot-cpp-template) .
 
-Even most of this readme is their hard work, and credit for this template belongs to the maintainers of that repository, as I have only made small changes, mainly
-omiting the godot-cpp bindings as a git submodule, due to the fact that a submodule points to a specific branch/tag/commit in the repository.
+Even parts of this readme is their hard work, and credit for this template belongs to the maintainers of that repository, as I have only made small changes, mainly
+omitting the godot-cpp bindings as a git submodule, due to the fact that a submodule points to a specific branch/tag/commit in the repository.
+
+Any blame for braking things is probably mine.  Also, a special thanks to enetheru.
 
 # godot-cpp template
 This repository serves as a quickstart template for GDExtension development with Godot 4.0+.
@@ -10,7 +12,6 @@ This repository serves as a quickstart template for GDExtension development with
 * Preconfigured source files for C++ development of the GDExtension ([src/](./src/))
 * An empty Godot project in [project/](./project), to test the GDExtension
 * godot-cpp as CMake fetched content
-
 
 ## Usage - Template
 
@@ -65,7 +66,7 @@ cmake --build cmake-build-debug
 ```
 
 If the build command worked, you should have a new library file for the target system in project [bin](./project/bin).
-You can test it with the [project](./project) project. Import it into Godot, open it, and launch the main scene. You should see it print the following line in the console:
+You can test it with the [project](./project). Import it into Godot, open it, and launch the main scene. You should see it print the following line in the console:
 
 ```
 Type: 24
