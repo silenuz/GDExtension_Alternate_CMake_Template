@@ -3,7 +3,9 @@ Note the content of this repository is basically the same as the [official templ
 Even parts of this readme is their hard work, and credit for this template belongs to the maintainers of that repository, as I have only made small changes, mainly
 omitting the godot-cpp bindings as a git submodule, due to the fact that a submodule points to a specific branch/tag/commit in the repository.
 
-Any blame for braking things is probably mine.  Also, a special thanks to enetheru.
+Any blame for braking things is probably mine.  
+
+A special thanks to [enetheru](https://github.com/enetheru) for his hard work on the original cmake file that is used in this template, as well as for all the time and guidance provided.
 
 # godot-cpp template
 This repository serves as a quickstart template for GDExtension development with Godot 4.0+.
