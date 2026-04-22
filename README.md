@@ -61,6 +61,14 @@ The value after the `-B` argument is the name of the folder that will be created
 ```shell
 cmake -G Ninja -S . -B cmake-build-debug
 ```
+It is also possible to have the configuration generate a list of compile commands to use with clangd for autocompletion,
+with editors that have [LSP](https://microsoft.github.io/language-server-protocol/) client support.
+When enabled it will also generate a `.clangd` file in the uppermost project level, that contains the path to the `compile_commands.json` file. This file will automatically be processed by clangd.
+
+To enable the generation of the compile commands simply add the following override, `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON` like so:
+```shell
+cmake -G Ninja -S . -B cmake-build-debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+```
 Once it is configured you can build it by specifying the target as the cmake-build-debug folder:
 
 ```shell
