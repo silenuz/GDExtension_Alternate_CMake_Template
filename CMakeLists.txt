@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.17)
 if(CMAKE_C_COMPILER)
 endif()
 
+option(CMAKE_EXPORT_COMPILE_COMMANDS "Create compile_commands.json" OFF)
 set(LIBNAME "EXTENSION-NAME") # "The name of the library"
 set(GODOT_PROJECT_DIR "project" CACHE STRING "The directory of a Godot project folder")
 
@@ -23,6 +24,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(godot-cpp)
 
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
+    cmake_path(RELATIVE_PATH CMAKE_BINARY_DIR BASE_DIRECTORY "${CMAKE_SOURCE_DIR}" OUTPUT_VARIABLE build_folder)
+    configure_file("${CMAKE_SOURCE_DIR}/temp_clangd" "${CMAKE_SOURCE_DIR}/.clangd")
+endif()
 
 # Add godot-cpp's module path and include the exported functions.
 # This is made available for documentation generation
